@@ -16,7 +16,7 @@ Both services communicate with each other, with the external service making call
 ## Infrastructure Components
 
 ### EKS Cluster Configuration
-- **Cluster Name**: `jp`
+- **Cluster Name**: `eks-jp`
 - **Region**: `us-east-1`
 - **Kubernetes Version**: `1.30`
 - **Availability Zones**: `us-east-1a`, `us-east-1b`
@@ -38,7 +38,7 @@ Both services communicate with each other, with the external service making call
 
 ## Docker Images
 
-- `jeenapandit/external-api:v1.0` - External API service
+- `jeenapandit/event-external:v1.0` - External API service
 - `jeenapandit/event-internal:v1.0` - Internal API service
 
 ## File Structure
