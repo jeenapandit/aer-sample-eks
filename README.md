@@ -90,3 +90,46 @@ Both services communicate with each other, with the external service making call
    ```
 
 **Note:** The applications will be deployed to the `development` namespace. If you prefer to add the namespace directly to the YAML files, add `namespace: development` under the `metadata` section of each deployment and service file.
+
+## How to Access Your Website
+
+After successful deployment, you can access your services through the LoadBalancer DNS names:
+
+### Get Service URLs
+```bash
+kubectl get services -n development
+```
+
+This will show output similar to:
+```
+NAME              TYPE           EXTERNAL-IP                                                              PORT(S)
+events-external   LoadBalancer   aa11ea7edbc214c349a56ecce715b394-850688047.us-east-1.elb.amazonaws.com   80:30238/TCP
+events-internal   LoadBalancer   ad9a763ae6ece4804b8b9c9c8c9a8b12-612744394.us-east-1.elb.amazonaws.com   80:31196/TCP
+```
+
+### Access Methods
+
+**Web Browser:**
+- Copy the `events-external` EXTERNAL-IP and paste it in your browser
+- Example: `http://aa11ea7edbc214c349a56ecce715b394-850688047.us-east-1.elb.amazonaws.com`
+
+### Troubleshooting Access Issues
+
+If you cannot access the services:
+
+1. **Check if pods are running:**
+   ```bash
+   kubectl get pods -n development
+   ```
+
+2. **Check application logs:**
+   ```bash
+   kubectl logs [POD-NAME] -n development
+   ```
+
+3. **Verify endpoints:**
+   ```bash
+   kubectl get endpoints -n development
+   ```
+
+**Note:** The applications must be listening on ports 8080 (external) and 8082 (internal) respectively for the services to work correctly.
