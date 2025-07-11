@@ -53,6 +53,16 @@ Both services communicate with each other, with the external service making call
 └── README.md                  # This file
 ```
 
+### File Descriptions
+
+- **cluster.yaml**: Complete EKS cluster configuration with node groups and Fargate profiles
+- **env_namespace.yml**: Creates the 'development' namespace for application isolation
+- **external-deployment.yaml**: Deploys the public-facing API service with 3 replicas
+- **external-service.yaml**: LoadBalancer service exposing external API on port 80
+- **internal-deployment.yaml**: Deploys the internal business logic service with 1 replica
+- **internal-service.yaml**: LoadBalancer service exposing internal API on port 80
+- **README.md**: Project documentation and deployment instructions
+
 ## Deployment
 
 1. Create the EKS cluster:
