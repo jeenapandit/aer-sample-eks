@@ -60,20 +60,23 @@ Both services communicate with each other, with the external service making call
    eksctl create cluster -f cluster.yaml
    ```
 
-2. Deploy the applications:
+2. Create the development namespace:
    ```bash
    kubectl apply -f env_namespace.yml
-   kubectl apply -f internal-deployment.yaml
-   kubectl apply -f internal-service.yaml
-   kubectl apply -f external-deployment.yaml
-   kubectl apply -f external-service.yaml
    ```
 
-## Monitoring
+3. Deploy the applications to the development namespace:
+   ```bash
+   kubectl apply -f internal-deployment.yaml -n development
+   kubectl apply -f internal-service.yaml -n development
+   kubectl apply -f external-deployment.yaml -n development
+   kubectl apply -f external-service.yaml -n development
+   ```
 
-CloudWatch logging is enabled for the following components:
-- API server
-- Audit logs
-- Authenticator
-- Controller Manager
-- Scheduler
+4. Verify the deployment:
+   ```bash
+   kubectl get pods -n development
+   kubectl get services -n development
+   ```
+
+**Note:** The applications will be deployed to the `development` namespace. If you prefer to add the namespace directly to the YAML files, add `namespace: development` under the `metadata` section of each deployment and service file.
