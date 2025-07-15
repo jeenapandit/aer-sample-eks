@@ -45,7 +45,7 @@ Both services communicate with each other, with the external service making call
 
 ```
 ├── cluster.yaml              # EKS cluster configuration
-├── env_namespace.yml          # Namespace definitions
+├── env_namespace.yaml          # Namespace definitions
 ├── external-deployment.yaml   # External API deployment
 ├── external-service.yaml      # External API service (LoadBalancer)
 ├── internal-deployment.yaml   # Internal API deployment
@@ -56,7 +56,7 @@ Both services communicate with each other, with the external service making call
 ### File Descriptions
 
 - **cluster.yaml**: Complete EKS cluster configuration with node groups and Fargate profiles
-- **env_namespace.yml**: Creates the 'development' namespace for application isolation
+- **env_namespace.yaml**: Creates the 'development' namespace for application isolation
 - **external-deployment.yaml**: Deploys the public-facing API service with 3 replicas
 - **external-service.yaml**: LoadBalancer service exposing external API on port 80
 - **internal-deployment.yaml**: Deploys the internal business logic service with 1 replica
@@ -72,7 +72,7 @@ Both services communicate with each other, with the external service making call
 
 2. Create the development namespace:
    ```bash
-   kubectl apply -f env_namespace.yml
+   kubectl apply -f env_namespace.yaml
    ```
 
 3. Deploy the applications to the development namespace:
