@@ -4,3 +4,10 @@ metadata:
   name: development
   labels:
     name: development
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: main
+  labels:
+    name: main
